@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Date check</title>
+
+<script type="text/javascript">
+alert('in js');
+ function checkDate() {
+            alert(document.frm.txndt.value);
+			var dateString = document.frm.txndt.value;
+    var myDate = new Date(dateString);
+    var today = new Date();
+         if (document.frm.txndt.value == "")
+          { 
+          //something is wrong
+          alert('REQUIRED FIELD ERROR: Please enter date in field!')
+          return false;
+          }
+          else if (myDate<today)
+          { 
+            alert('You cannot enter a date in the future!')
+            return false;
+          }
+          // if script gets this far through all of your fields
+          // without problems, it's ok and you can submit the form
+          return true;
+}
+</script>
+</head>
+
+<body>
+
+<form name="frm">
+	Enter Date(in mm-dd-yyyy format) : <input type="date" id="txndt" />
+
+        <input type="submit" value="SUBMIT" name="submit" onsubmit="return checkDate();"/>
+</form>
+
+
+<form  name="purchase" id ="purchase" method="post" action="" onsubmit="return checkform()">
+    <div class="form-group">
+        <div class="input-group col-sm-4">
+            <div class="input-group-addon">Transaction Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-calendar"></i></div>
+                <input id ="txndt" class="form-control" type="date" name ="purch_date"  required />
+        </div>
+    </div>
+</form>
+</body>
+</html>
